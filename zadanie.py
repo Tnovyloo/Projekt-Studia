@@ -11,7 +11,7 @@ def list_generator(length_of_list:int, x:int, y:int):
     
 
 def find_decreasing_sequence(global_list:list):
-    """local_list -> lista"""
+    """global_list -> lista"""
     # print(f"Lista to: {global_list}")
 
     all_sequences = []
@@ -53,4 +53,6 @@ def generator_test():
 
 # print(test())
 # test()
-generator_test()
+
+if __name__ == "__main__":
+    generator_test()
