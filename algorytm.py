@@ -1,5 +1,5 @@
 from random import randint
-from re import L
+import time
 
 def list_generator(length_of_list:int, x:int, y:int):
     """ length_of_list : int -> dlugosc listy
@@ -14,11 +14,11 @@ def find_decreasing_sequence(global_list:list):
     """global_list -> lista"""
     # print(f"Lista to: {global_list}")
 
-    all_sequences = []
-    temp_sequence = []
+    all_sequences = []                      # Tworzę listę wszystkich podciągów
+    temp_sequence = []                      # Tworzę pomocniczą chwilową listę do której bedę zapisywał wyrazy które spełniają założenia podciągu
     for p in range(0, len(global_list) - 1):    # Tworzę pivota który bedzie przemierzał listę
         if global_list[p] > global_list[p + 1]:             # Jeśli lista[p] > lista[p + 1] wtedy:
-            all_sequences.append([global_list[p], global_list[p + 1]])  # Dodaję ciąg dwuwyrazowy do wszystkich ciągów występujacych w liście
+            all_sequences.append([global_list[p], global_list[p + 1]])  # Dodaję ciąg dwuwyrazowy do wszystkich ciągów występujacych w podanej liście
             temp_sequence = [global_list[p], global_list[p + 1]]        # Dodaję również go do chwilowego 'pomocniczego' ciągu 
             for q in range(p + 1, len(global_list) - 1):                    # Następnie tworzę pomocniczego pivota tzw. 'q',
                                                                             # będzie on sprawdzał czy od miejsca 'list[p]' następne wyrazy są malejące.
@@ -44,15 +44,27 @@ def test():
     # return result
 
 def generator_test():
-    user_input = int(input('Ilosc tablic'))
+    user_input = int(input('Ilosc wszystkich list:'))
+    list_length = int(input('Wielkosc tych tablic:'))
     x = int(input('zakres x'))
     y = int(input('zakres y'))
     for i in range(user_input):
-        tested_list = list_generator(length_of_list=user_input, x=x, y=y)
+        tested_list = list_generator(length_of_list=list_length, x=x, y=y)
         print(find_decreasing_sequence(tested_list))
 
 # print(test())
 # test()
+def check_time():
+
+    for i in range(11):
+        elements = 1000000 * i
+        tested_list = list_generator(elements, 0, 10)
+        start = time.time() # start 
+        find_decreasing_sequence(global_list=tested_list)
+        end = time.time()
+        print(f"Czas dla {elements} elementów w liście: {end - start}")
+
 
 if __name__ == "__main__":
-    generator_test()
+    # generator_test()
+    check_time()
