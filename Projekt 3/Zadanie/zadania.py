@@ -211,7 +211,7 @@ def zadanie6(graf):
     G = nx.DiGraph(edges)
 
     for cycle in nx.simple_cycles(G):
-        print(cycle)
+        print(f"Pętla {cycle}")
 
 
 def zadanie7(graf):
@@ -231,7 +231,7 @@ def zadanie7(graf):
                 # Dodajemy dwukierunek
                 two_way.append([w, w1])
 
-    print(two_way)
+    print(f"Dwukierunkowe: {two_way}")
 
 if __name__ == '__main__':
     print("Zadanie 1")
