@@ -159,7 +159,7 @@ def zadanie5(graf):
 
 def zadanie6(graf):
     """
-    Funkcja wypisująca wszystkie pętle
+    Funkcja wypisująca wszystkie CYKLE (Nie pętle - myslałem że to to samo ;P)
     """
 
     # PRÓBA BEZ INTERNETU (ZOSTAWIAM KOD DLA WIARYGODNOŚCI PRÓBOWANIA ZROBIENIA TEGO SAMEMU.)
@@ -200,18 +200,18 @@ def zadanie6(graf):
     # https://stackoverflow.com/questions/59820748/how-to-detect-a-cycle-in-a-directed-graph-with-python
 
     # Do uruchomienia wpisać komende "pip install networkx"
-    import networkx as nx
-
-    # TWORZE KRAWĘDZIE I ZAPISUJE JE DO LISTY W TYPIE 'TUPLE'
-    edges = []
-    for w in graf:
-        for w1 in graf[w]:
-            edges.append((w, w1))
-    # print(edges)
-    G = nx.DiGraph(edges)
-
-    for cycle in nx.simple_cycles(G):
-        print(f"Pętla {cycle}")
+    # import networkx as nx
+    #
+    # # TWORZE KRAWĘDZIE I ZAPISUJE JE DO LISTY W TYPIE 'TUPLE'
+    # edges = []
+    # for w in graf:
+    #     for w1 in graf[w]:
+    #         edges.append((w, w1))
+    # # print(edges)
+    # G = nx.DiGraph(edges)
+    #
+    # for cycle in nx.simple_cycles(G):
+    #     print(f"Pętla {cycle}")
 
 
 def zadanie7(graf):

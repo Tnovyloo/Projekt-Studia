@@ -90,8 +90,8 @@ graf5 = [['A', 'B'],
          ['E', 'F'],
          ['F', 'G'],
          ['G', 'H'],
-         # TEST
-         ['D', 'B']
+         ['A', 'A'],
+         ['H', 'H'],
          ]
 
 # FUNKCJE DO KONKRETNYCH ZADAŃ
@@ -211,7 +211,7 @@ def zadanie4(graph):
 def zadanie5(graph):
     """Funkcja wypisująca wierzchołki izolowane.
         (Czyli w sumie takie które tworzą pętle z samym sobą,
-        oraz nie są i nie mają sąsiadów)"""
+        oraz nie są sąsiadami i nie mają sąsiadów)"""
 
     return_list = []
 
@@ -233,7 +233,7 @@ def zadanie5(graph):
             return_list.append(help_list)
 
     for i in return_list:
-        print(i)
+        print(f"Wierzchołki izolowane to:", i[0][0])
 
 
 def zadanie6(graph):
@@ -241,7 +241,7 @@ def zadanie6(graph):
     Funkcja wypisująca wszystkie pętle
     """
 
-    # NIE UDANA PRÓBA
+    # PRÓBA WYPISANIA CYKLU W GRAFIE.
     # edges_len = len(graph)
     #
     # for e in graph:
@@ -274,12 +274,26 @@ def zadanie6(graph):
         #     if
         # print(temp_list)
 
-    import networkx as nx
 
-    G = nx.DiGraph(graph)
+    # # https://networkx.org/documentation/stable/_modules/networkx/algorithms/cycles.html
+    # import networkx as nx
+    #
+    # G = nx.DiGraph(graph)
+    #
+    # for cycle in nx.simple_cycles(G):
+    #     print(f"Pętla {cycle}")
 
-    for cycle in nx.simple_cycles(G):
-        print(f"Pętla {cycle}")
+
+    # PĘTLA TO CO INNEGO NIŻ CYKL - ODNOTOWANO :D
+    return_list = []
+
+    for e in graph:
+        if e[0] == e[1]:
+            return_list.append(e)
+
+    for i in return_list:
+        print(f"Pętle", i)
+
 
 
 def zadanie7(graph):
@@ -288,15 +302,17 @@ def zadanie7(graph):
     all_edges = []
 
     for e in graph:
-        er = [e[1], e[0]]  # 'er' edge reversed - Krawedź odwrotna
+        er = [e[1], e[0]]  # 'er' - 'edge reversed' - Krawedź odwrotna
+        # Jeśli odwrócona krawedź znajduje się w liscie krawedzi to ją dodaj
         if er in graph:
-            all_edges.append(f"Krawędź {e} i {er}")
+            if not er[0] == er[1]:
+                all_edges.append(f"Krawędź {e} i {er}")
 
-    print(all_edges)
+    for i in all_edges:
+        print(i)
 
 
 if __name__ == '__main__':
-    print(graf1)
     print("Zadanie 1")
     zadanie1(graf1)
     print("Zadanie 2")
